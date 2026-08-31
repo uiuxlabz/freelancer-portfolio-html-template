@@ -4,6 +4,10 @@ A warm, approachable freelancer and developer portfolio template. Framework-free
 
 ---
 
+## 📸 Screenshot
+
+![Homepage Preview](screenshot.png)
+
 ## Pages
 
 | Page | File | Description |
