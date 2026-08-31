@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Talk — DevFolio</title>
+  <meta name="description" content="Get in touch with DevFolio — let's discuss your next project, idea, or collaboration.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <style>
+    /* --- Page Hero --- */
+    .page-hero {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--color-cream);
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(55,48,163,.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      color: var(--color-charcoal);
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--color-indigo);
+      position: relative;
+    }
+    .page-hero h1 em::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--color-amber);
+      opacity: .35;
+      border-radius: 4px;
+      z-index: -1;
+    }
+    .page-hero p {
+      font-size: 1.125rem;
+      color: var(--color-gray-mid);
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- Contact Section --- */
+    .contact-section {
+      padding: 100px 0;
+      background: var(--color-gray-soft);
+    }
+    .contact-section__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-section__info h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--color-charcoal);
+      margin-bottom: 16px;
+    }
+    .contact-section__info h2 em {
+      font-style: normal;
+      color: var(--color-indigo);
+    }
+    .contact-section__info > p {
+      color: var(--color-gray-mid);
+      margin-bottom: 32px;
+    }
+    .contact-section__detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .contact-section__detail i {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-indigo);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-section__detail span {
+      color: var(--color-charcoal);
+      font-weight: 600;
+      font-size: .9375rem;
+    }
+    .contact-section__detail small {
+      display: block;
+      color: var(--color-gray-mid);
+      font-size: .8125rem;
+      font-weight: 400;
+    }
+
+    /* --- Form Card --- */
+    .form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+      color: var(--color-charcoal);
+    }
+    .form-ok, .form-err {
+      display: none;
+      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-size: .875rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .form-ok {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+    .form-err {
+      background: #FEF2F2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+    }
+    .form-ok.visible, .form-err.visible { display: block; }
+
+    /* --- Contact Background Band --- */
+    .contact-bg {
+      position: relative;
+      background: url('../img/contact.jpg') center/cover no-repeat;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(30,27,75,.85);
+    }
+    .contact-bg__inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .contact-bg__inner h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--color-white);
+      margin-bottom: 12px;
+    }
+    .contact-bg__inner h2 em {
+      font-style: normal;
+      color: var(--color-amber);
+    }
+    .contact-bg__inner p {
+      color: rgba(255,255,255,.7);
+      font-size: 1.0625rem;
+      margin-bottom: 28px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-bg__links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .contact-bg__links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,.1);
+      color: var(--color-white);
+      font-family: var(--font-display);
+      font-size: .875rem;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+    }
+    .contact-bg__links a:hover {
+      background: var(--color-amber);
+      color: var(--color-charcoal);
+    }
+
+    @media (max-width: 1024px) {
+      .contact-section__grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .contact-section, .contact-bg { padding: 64px 0; }
+      .contact-bg { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__spinner"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo">Dev<span>Folio</span></a>
+      <div class="navbar__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <div class="navbar__cta">
+        <a href="contact.html" class="btn btn--primary">Let's Talk</a>
+      </div>
+      <button class="navbar__burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Let's <em>Talk</em></h1>
+      <p>Have a project in mind? I'd love to hear about it.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-section__grid">
+        <div class="contact-section__info reveal">
+          <div class="section-header text-left">
+            <p>Get In Touch</p>
+            <h2>Let's Build Something <em>Together</em></h2>
+          </div>
+          <p>I'm always open to new opportunities, collaborations, and interesting conversations. Whether you have a full project brief or just a rough idea, drop me a line.</p>
+          <div class="contact-section__detail">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span>hello@devfolio.com</span>
+              <small>Response within 24 hours</small>
+            </div>
+          </div>
+          <div class="contact-section__detail">
+            <i class="fas fa-phone"></i>
+            <div>
+              <span>+1 (555) 123-4567</span>
+              <small>Mon&ndash;Fri, 9am&ndash;6pm PT</small>
+            </div>
+          </div>
+          <div class="contact-section__detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <span>San Francisco, CA</span>
+              <small>Available for remote work worldwide</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-card reveal reveal-delay-1">
+          <h3>Send a Message</h3>
+          <div class="form-ok" data-form="ok">Your message has been sent! I'll get back to you shortly.</div>
+          <div class="form-err" data-form="err">Something went wrong. Please try again or email me directly.</div>
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project inquiry">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Send Message <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Background Band -->
+  <section class="contact-bg">
+    <div class="contact-bg__inner">
+      <h2>Prefer a <em>Quick Chat</em>?</h2>
+      <p>Skip the form and reach out directly through any of these channels.</p>
+      <div class="contact-bg__links">
+        <a href="mailto:hello@devfolio.com"><i class="fas fa-envelope"></i> Email Me</a>
+        <a href="tel:+15551234567"><i class="fas fa-phone"></i> Call Me</a>
+        <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <h3>Dev<span>Folio</span></h3>
+          <p>Crafting thoughtful digital experiences for clients who care about quality, performance, and people.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <a href="index.html#services">UI/UX Design</a>
+          <a href="index.html#services">Web Development</a>
+          <a href="index.html#services">Mobile Apps</a>
+          <a href="index.html#services">Brand Strategy</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@devfolio.com">hello@devfolio.com</a>
+          <a href="tel:+15551234567">+1 (555) 123-4567</a>
+          <a href="#">San Francisco, CA</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; <span class="year">2026</span> DevFolio. All rights reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color:var(--color-amber);"></i> for freelancers everywhere.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
